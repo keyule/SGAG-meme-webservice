@@ -28,14 +28,13 @@ async function crawlAndStoreMemes() {
 
     // Store memes in the database
     await Promise.all(memes.map(async meme => {
-      // Check if the meme with the same ID already exists in the database
       const existingMeme = await dbPool.query('SELECT id FROM memes WHERE id = $1', [meme.id]);
       if (existingMeme.rows.length === 0) {
-        // If the meme doesn't exist, insert it into the database
+        // If no exist, insert it into the database
         await dbPool.query('INSERT INTO memes (id, title, url, author, created_utc, upvotes) VALUES ($1, $2, $3, $4, $5, $6)', [meme.id, meme.title, meme.url, meme.author, meme.created_utc, meme.upvotes]);
         console.log(`Meme with ID ${meme.id} stored successfully.`);
       } else {
-        // If the meme already exists, update its upvote count
+        // If exists, update its upvote count
         await dbPool.query('UPDATE memes SET upvotes = $1 WHERE id = $2', [meme.upvotes, meme.id]);
         console.log(`Meme with ID ${meme.id} already exists. Upvote count updated.`);
       }
@@ -47,14 +46,20 @@ async function crawlAndStoreMemes() {
   }
 }
 
-// Endpoint to fetch memes from the database
+// /memes?limit= 
 app.get('/memes', async (req, res) => {
   try {
-    // Calculate the timestamp for 24 hours ago
     const twentyFourHoursAgo = new Date(Date.now() - (24 * 60 * 60 * 1000)).toISOString();
 
-    // Select the top 20 memes from the past 24 hours
-    const result = await dbPool.query('SELECT * FROM memes WHERE created_utc >= $1 ORDER BY upvotes DESC LIMIT 20', [twentyFourHoursAgo]);
+    const limit = parseInt(req.query.limit, 10) || 20;
+
+    //Ensure cant request too much
+    const safeLimit = Math.min(Math.max(limit, 1), 100);
+
+    const result = await dbPool.query(
+      'SELECT * FROM memes WHERE created_utc >= $1 ORDER BY upvotes DESC LIMIT $2',
+      [twentyFourHoursAgo, safeLimit]
+    );
     const memes = result.rows;
 
     return res.json({ memes });
@@ -72,13 +77,12 @@ async function crawlMemesPeriodically() {
   } catch (error) {
     console.error('Failed to crawl memes:', error);
   } finally {
-    // Schedule the next call after a delay
     setTimeout(crawlMemesPeriodically, 3600000 - 30000); // 1 hour - 30 seconds
   }
 }
 
 // Initial call after waiting for 30 seconds
-setTimeout(crawlMemesPeriodically, 30000); // 30 seconds
+setTimeout(crawlMemesPeriodically, 30000); 
 
 // Start the server
 const port = process.env.PORT || 3000;

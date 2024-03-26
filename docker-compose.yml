@@ -25,3 +25,10 @@ services:
         restart: always
         depends_on:
             - app
+
+    telegram:
+        build: ./telegram
+        environment:
+            BOT_TOKEN: '7049351315:AAGCLVNWjiSb95k_z31yWkqxOCUfSHWpK28'
+        depends_on:
+            - app

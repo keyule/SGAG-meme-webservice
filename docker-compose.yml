@@ -29,6 +29,6 @@ services:
     telegram:
         build: ./telegram
         environment:
-            BOT_TOKEN: '7049351315:AAGCLVNWjiSb95k_z31yWkqxOCUfSHWpK28'
+            BOT_TOKEN: '7049351315:AAGCLVNWjiSb95k_z31yWkqxOCUfSHWpK28' # I have revoked this
         depends_on:
             - app

@@ -98,3 +98,4 @@ I have no idea what this telegram chat bot is for. But point 3 of the challenge 
 
 - Add in Redis for fun
 - Do up a presentation deck? 
+- Oh am I suppose to do some sort of data visualizations based on historical meme data? Like a dashboard? 

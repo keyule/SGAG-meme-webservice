@@ -38,8 +38,9 @@ The main objectives of it is as follows:
 
 ## Links
 
-- Frontend Only Live Site URL: [here](https://keyule.github.io/SGAG-meme-webservice/)
-*Note: The Live Site is hosted with dummy data, to run the full stack application go to [Running](#Running)
+- Frontend Only Live Site URL: [here](https://keyule.github.io/SGAG-meme-webservice/)  
+  
+*Note: The Live Site is hosted with dummy data, to run the full stack application go to [Running](#Running)*
 
 # Design
 

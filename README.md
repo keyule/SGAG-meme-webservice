@@ -1,6 +1,6 @@
 # SGAG Meme Webservice
 
-This is a solution to the hiring assignemnt set out my SGAG media. 
+This is a solution to the hiring assignemnt set out by SGAG media. 
 
 ## Table of contents
 

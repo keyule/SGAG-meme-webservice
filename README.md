@@ -32,49 +32,49 @@ The main objectives of it is as follows:
 
 *The full assignment can be found [here](./assignment.txt)*
 
-### Screenshot of Frontend
+## Screenshot of Frontend
 
 ![](./web/screenshot/Screenshot.png)
 
-### Links
+## Links
 
 - Frontend Only Live Site URL: [here](https://keyule.github.io/SGAG-meme-webservice/)
 *Note: The Live Site is hosted with dummy data, to run the full stack application go to [Running](#Running)
 
-## Design
+# Design
 
-### Built with
+## Built with
 
-**Front End**
-- React
-- Tailwind CSS
-- Aceternity UI
+- **Front End**
+    - React
+    - Tailwind CSS
+    - Aceternity UI
 
-**Back End**
-- Node
+- **Back End**
+    - Node
 
-**Database**
-- Postgres
+- **Database**
+    - Postgres
 
-**Telegram Bot**
-- Python
-- [python-telegram-bot](https://python-telegram-bot.org/) 
+- **Telegram Bot**
+    - Python
+    - [python-telegram-bot](https://python-telegram-bot.org/) 
 
-### Running
+## Running
 
-**Without the pointless telegram bot**
-1. git clone this repo 
-2. `docker-compose up --build -d`
-3. API sits on port 3000
-4. Web Server sits on port 5173
+- **Without telegram bot**
+    1. git clone this repo 
+    2. `docker-compose up --build -d`
+    3. API sits on port 3000
+    4. Web Server sits on port 5173
 
-**With telegram**
-1. git clone this repo
-2. Register a new Telegram bot via BotFather (see https://core.telegram.org/bots)  
-3. Replace `BOT_TOKEN:` in `docker-compose.yml`
-4. Proceed with step 2 above
+- **With telegram**
+    1. git clone this repo
+    2. Register a new Telegram bot via BotFather (see https://core.telegram.org/bots)  
+    3. Replace `BOT_TOKEN:` in `docker-compose.yml`
+    4. Proceed with step 2 above
 
-### End Points
+## End Points
 
 **API: Port 3000**  
 
@@ -82,7 +82,7 @@ The main objectives of it is as follows:
 | ----------- |-------------| ----------- | --------------|
 | /memes | GET | Returns number of memes based on limit | limit= (max 100) |
 
-### Telegram 
+## Telegram 
 I have no idea what this telegram chat bot is for. But point 3 of the challenge stated that it should be able to generate a file that can be sent in a telegram chatbot. So I added this in. The chatbot just hits the API grabs the memes and sents a PDF file containing the memes. 
 
 | Commands | Description |
@@ -93,7 +93,7 @@ I have no idea what this telegram chat bot is for. But point 3 of the challenge 
 | /memefile | Returns top 5 memes in a PDF? |
 
 
-## Todo
+# Todo
 
 - Add in Redis for fun
 - Do up a presentation deck? 
